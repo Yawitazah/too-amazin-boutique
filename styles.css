@@ -500,7 +500,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ====================== VENDORS ====================== */
 .vendors { max-width: var(--maxw); margin: 0 auto; padding: 6.5rem 1.5rem; }
-.vendor-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.vendor-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 .vendor-card {
   background: #fff;
   border-radius: var(--radius);
