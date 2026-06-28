@@ -82,6 +82,54 @@
     success.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
+  /* ---------- Lightbox (click any photo to enlarge) ---------- */
+  const lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    const lbImg = document.getElementById("lightboxImg");
+    const lbTitle = document.getElementById("lightboxTitle");
+    const lbList = document.getElementById("lightboxList");
+    const lbClose = document.getElementById("lightboxClose");
+
+    const openLightbox = (fig) => {
+      const img = fig.querySelector("img");
+      if (!img) return;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || "";
+      lbTitle.textContent = fig.dataset.title || img.alt || "";
+      lbList.innerHTML = "";
+      const items = (fig.dataset.items || "")
+        .split("|")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      items.forEach((text) => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        lbList.appendChild(li);
+      });
+      lbList.style.display = items.length ? "" : "none";
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      body.classList.add("lb-open");
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      body.classList.remove("lb-open");
+    };
+
+    document.querySelectorAll(".zoomable").forEach((fig) =>
+      fig.addEventListener("click", () => openLightbox(fig))
+    );
+    lbClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
+    });
+  }
+
   /* ---------- Footer year ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
