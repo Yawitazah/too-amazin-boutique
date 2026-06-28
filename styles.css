@@ -339,7 +339,7 @@ a { color: inherit; text-decoration: none; }
 .mission {
   background:
     linear-gradient(rgba(77,38,64,.92), rgba(46,111,79,.9)),
-    url('images/hero-neon.jpg') center/cover fixed;
+    url('images/hero-neon.jpg?v=2') center/cover fixed;
   color: #fff;
   text-align: center;
   padding: 6rem 1.5rem;
