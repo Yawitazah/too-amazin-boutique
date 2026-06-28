@@ -676,6 +676,30 @@ a { color: inherit; text-decoration: none; }
 .socials { display: flex; gap: 1.2rem; }
 .socials a { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
 
+.visit-photo {
+  position: relative;
+  margin-top: 2rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.visit-photo img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  transition: transform .6s;
+}
+.visit-photo:hover img { transform: scale(1.05); }
+.visit-photo figcaption {
+  position: absolute; inset: auto 0 0 0; z-index: 2;
+  padding: 1.7rem 1.2rem 1.1rem;
+  background: linear-gradient(transparent, rgba(46,24,40,.88));
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+}
+
 .visit-form-wrap {
   background: #fff;
   color: var(--ink);
